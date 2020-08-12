@@ -11,7 +11,7 @@
         <main>
             <header id="app">
                 <h1 v-if="counter === 3">{{ title }}</h1>
-                <p v-else>{{ counter }}</p>
+                <p v-else>{{ counterMultiply }}</p>
                 <button @click="increaseCounter">+1</button>
                 <button @click="decreaseCounter">-1</button>
             </header>
@@ -22,6 +22,16 @@
                     data: {
                         title: "Hello Vue!",
                         counter: 0,
+                    },
+                    computed: {
+                        counterMultiply() {
+                            return this.counter * 2;
+                        }
+                    },
+                    watch: {
+                        counter() {
+                            console.log('counter was updated');
+                        }
                     },
                     methods: {
                         increaseCounter() {
