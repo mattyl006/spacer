@@ -5,19 +5,34 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>spacer</title>
         <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <link href="style.css" rel="stylesheet" type="text/css">
     </head>
     <body>
-        <header id="app">
-            <h1>{{ title }}</h1>
-        </header>
+        <main>
+            <header id="app">
+                <h1 v-if="counter === 3">{{ title }}</h1>
+                <p v-else>{{ counter }}</p>
+                <button @click="increaseCounter">+1</button>
+                <button @click="decreaseCounter">-1</button>
+            </header>
 
-        <script>
-            new Vue({
-                el: '#app',
-                data: {
-                    title: 'Hello Vue!'
-                }
-            })
-        </script>
+            <script>
+                new Vue({
+                    el: "#app",
+                    data: {
+                        title: "Hello Vue!",
+                        counter: 0,
+                    },
+                    methods: {
+                        increaseCounter() {
+                            this.counter++;
+                        },
+                        decreaseCounter() {
+                            this.counter--;
+                        },
+                    },
+                });
+            </script>
+        </main>
     </body>
 </html>
