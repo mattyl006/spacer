@@ -4,8 +4,8 @@
       <label for="search">Search</label>
       <input id="search" name="search" v-model="searchValue" @input="handleInput" />
       <ul>
-        <li v-for="item in results" :key="item.id">
-          <p>{{ item.largeImageURL }}</p>
+        <li v-for="item in results" :key="item.data[0].nasa_id">
+          <p>{{ item.data[0].description }}</p>
         </li>
       </ul>
     </div>
@@ -16,7 +16,7 @@
 import axios from 'axios';
 import debounce from 'lodash.debounce';
 
-const API = 'https://pixabay.com/api/?key=18106414-1107bb6e032c28774d4b9314f&';
+const API = 'https://images-api.nasa.gov/search';
 
 export default {
   name: 'Search',
@@ -28,9 +28,9 @@ export default {
   },
   methods: {
     handleInput: debounce(function () {
-      axios.get(`${API}q=${this.searchValue}&image_type=photo`)
+      axios.get(`${API}?q=${this.searchValue}&media_type=image`)
         .then((response) => {
-          this.results = response.data.hits;
+          this.results = response.data.collection.items;
         })
         .catch((error) => {
           console.log(error);
