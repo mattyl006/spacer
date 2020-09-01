@@ -26,6 +26,15 @@ export default {
             font-weight: 600;
             margin: 0;
             margin-bottom: 36px;
+
+            @media (min-width: 768px) {
+                font-size: 48px;
+            }
+
+            @media (min-width: 1024px) {
+                font-size: 64px;
+                line-height: 64px;
+            }
         }
 
         &__describe {
@@ -33,6 +42,16 @@ export default {
             margin-bottom: 16px;
             font-size: 12px;
             font-weight: 400;
+            max-width: 420px;
+
+            @media (min-width: 768px) {
+                font-size: 14px;
+            }
+
+            @media (min-width: 1024px) {
+                font-size: 16px;
+                line-height: 32px;
+            }
         }
     }
 </style>

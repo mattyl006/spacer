@@ -16,7 +16,6 @@ export default {
 .search {
     display: flex;
     flex-direction: column;
-    width: 250px;
 
     &__label {
         margin: 0;
@@ -24,6 +23,14 @@ export default {
         font-size: 12px;
         font-weight: 400;
         text-align: center;
+
+        @media (min-width: 768px) {
+            font-size: 14px;
+        }
+
+        @media (min-width: 1024px) {
+            font-size: 16px;
+        }
     }
 
     &__input {
@@ -35,6 +42,14 @@ export default {
         text-align: center;
         border-bottom: 2px solid white;
         background: none;
+
+        @media (min-width: 768px) {
+            font-size: 14px;
+        }
+
+        @media (min-width: 1024px) {
+            font-size: 16px;
+        }
     }
 }
 </style>
