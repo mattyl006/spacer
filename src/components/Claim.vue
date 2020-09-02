@@ -26,6 +26,7 @@ export default {
             font-weight: 600;
             margin: 0;
             margin-bottom: 36px;
+            letter-spacing: 1px;
 
             @media (min-width: 768px) {
                 font-size: 48px;
@@ -43,6 +44,7 @@ export default {
             font-size: 12px;
             font-weight: 400;
             max-width: 420px;
+            letter-spacing: 1px;
 
             @media (min-width: 768px) {
                 font-size: 14px;

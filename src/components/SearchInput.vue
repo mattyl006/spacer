@@ -23,6 +23,7 @@ export default {
         font-size: 12px;
         font-weight: 400;
         text-align: center;
+        letter-spacing: 1px;
 
         @media (min-width: 768px) {
             font-size: 14px;
@@ -41,7 +42,14 @@ export default {
         color: white;
         text-align: center;
         border-bottom: 2px solid white;
+        letter-spacing: 2px;
         background: none;
+        transition: box-shadow .3s ease-out;
+
+        &:focus {
+            outline: transparent;
+            box-shadow: 0 10px 20px -8px rgba(255, 255, 255, 0.5);
+        }
 
         @media (min-width: 768px) {
             font-size: 14px;
@@ -49,6 +57,7 @@ export default {
 
         @media (min-width: 1024px) {
             font-size: 16px;
+            font-weight: 600;
         }
     }
 }
