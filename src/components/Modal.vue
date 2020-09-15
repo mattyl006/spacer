@@ -29,6 +29,17 @@ export default {
   top: 0;
   left: 0;
 
+  @media (min-width: 1024px) {
+    max-width: 70%;
+    height: 60%;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    box-shadow: 0 30px 30px -10px rgba(0, 0, 0, 0.3);
+  }
+
   &__close {
     position: absolute;
     width: 30px;
@@ -65,6 +76,14 @@ export default {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+
+  @media (min-width: 1024px) {
+    flex-direction: row;
+    &__photo {
+      min-width: 50%;
+      margin-right: 20px;
+    }
+  }
 
   &__photo {
     width: 100%;

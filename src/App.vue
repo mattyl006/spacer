@@ -16,10 +16,11 @@
         v-model="searchValue" @input="handleInput" :class="{ dark: step === 1 }"/>
       </div>
       <div class="results" v-if="results && !loading && step === 1">
-        <Item v-for="item in results" :item="item" :key="item.data[0].nasa_id" />
+        <Item v-for="item in results" :item="item" :key="item.data[0].nasa_id"
+              @click="handleModalOpen" />
       </div>
     </div>
-    <Modal />
+    <Modal v-if="modalOpen" @close-modal="modalOpen = false" />
   </div>
 </template>
 
@@ -43,6 +44,7 @@ export default {
   },
   data() {
     return {
+      modalOpen: false,
       loading: false,
       step: 0,
       searchValue: '',
@@ -50,6 +52,10 @@ export default {
     };
   },
   methods: {
+    handleModalOpen(item) {
+      this.modalOpen = true;
+      console.log(item);
+    },
     // eslint-disable-next-line
     handleInput: debounce(function () {
       this.loading = true;
