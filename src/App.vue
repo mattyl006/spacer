@@ -1,12 +1,20 @@
 <template>
   <div id="app">
-    <div class="wrapper">
-      <HeroImage />
-      <Claim />
+    <div :class="[{ flexStart: step === 1 }, 'wrapper']">
+      <transition name="slide">
+        <img src="./assets/logo.png" class="logo" v-if="step === 1">
+      </transition>
+      <transition name="fade">
+        <HeroImage v-if="step === 0" />
+      </transition>
+      <Claim v-if="step === 0" />
       <div class="search">
         <label class="search__label" for="search">Type anything space-related to start.</label>
         <input class="search__input" id="search" name="search"
-        v-model="searchValue" @input="handleInput"/>
+        v-model="searchValue" @input="handleInput" :class="{ dark: step === 1 }"/>
+      </div>
+      <div class="results">
+
       </div>
     </div>
   </div>
@@ -28,16 +36,22 @@ export default {
   },
   data() {
     return {
+      loading: false,
+      step: 0,
       searchValue: '',
       results: [],
     };
   },
   methods: {
+    // eslint-disable-next-line
     handleInput: debounce(function () {
+      this.loading = true;
       console.log(this.searchValue);
       axios.get(`${API}?q=${this.searchValue}&media_type=image`)
         .then((response) => {
           this.results = response.data.collection.items;
+          this.loading = false;
+          this.step = 1;
         })
         .catch((error) => {
           console.log(error);
@@ -71,7 +85,24 @@ body {
   line-height: 20px;
 }
 
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .3s ease;
+}
+
+.fade-enter, .fade-leave-to {
+  opacity: 0;
+}
+
+.slide-enter-active, .slide-leave-active {
+  transition: margin-top .3s ease;
+}
+
+.slide-enter, .slide-leave-to {
+  margin-top: -16px;
+}
+
 .wrapper {
+  position: relative;
   margin: 0;
   padding: 32px;
   width: 100%;
@@ -80,6 +111,15 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
+  &.flexStart {
+    justify-content: flex-start;
+  }
+}
+
+.logo {
+  position: relative;
+  top: 16px;
 }
 
 .search {
@@ -129,5 +169,14 @@ body {
             font-weight: 600;
         }
     }
+}
+
+.dark {
+  color: #1e3d4a;
+  border-bottom-color: #1e3d4a;
+  &:focus {
+    outline: transparent;
+    box-shadow: 0 10px 20px -8px rgba(#1e3d4a, 0.5);
+  }
 }
 </style>
