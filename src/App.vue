@@ -19,6 +19,7 @@
         <Item v-for="item in results" :item="item" :key="item.data[0].nasa_id" />
       </div>
     </div>
+    <Modal />
   </div>
 </template>
 
@@ -28,12 +29,14 @@ import debounce from 'lodash.debounce';
 import HeroImage from '@/components/HeroImage.vue';
 import Claim from '@/components/Claim.vue';
 import Item from '@/components/Item.vue';
+import Modal from '@/components/Modal.vue';
 
 const API = 'https://images-api.nasa.gov/search';
 
 export default {
   name: 'App',
   components: {
+    Modal,
     HeroImage,
     Claim,
     Item,

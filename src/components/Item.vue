@@ -29,7 +29,6 @@ export default {
 .item {
   width: 40vw;
   height: 30vw;
-  //height: 256px;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: 50%;
