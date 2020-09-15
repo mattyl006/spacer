@@ -2,7 +2,7 @@
   <div id="app">
     <div :class="[{ flexStart: step === 1 }, 'wrapper']">
       <transition name="slide">
-        <img src="./assets/logo.png" class="logo" v-if="step === 1">
+        <img src="./assets/logo.svg" class="logo" v-if="step === 1">
       </transition>
       <transition name="fade">
         <HeroImage v-if="step === 0" />
