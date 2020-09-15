@@ -1,11 +1,11 @@
 <template>
   <div class="outer-wrapper">
     <div class="inner-wrapper">
-      <img class="inner-wrapper__photo">
+      <img class="inner-wrapper__photo" :src="photo">
       <div class="inner-wrapper__description">
-        <h2 class="inner-wrapper__title">Title</h2>
+        <h2 class="inner-wrapper__title">{{ title }}</h2>
         <p class="inner-wrapper__description">
-          lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum
+          {{ description }}
         </p>
       </div>
     </div>
@@ -16,6 +16,24 @@
 <script>
 export default {
   name: 'Modal',
+  props: {
+    item: {
+      type: Object,
+      required: true,
+    },
+  },
+  data() {
+    return {
+      photo: null,
+      title: null,
+      description: null,
+    };
+  },
+  mounted() {
+    this.photo = this.item.links[0].href;
+    this.title = this.item.data[0].title;
+    this.description = this.item.data[0].description.substring(0, 250);
+  },
 };
 </script>
 
