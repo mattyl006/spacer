@@ -2,19 +2,21 @@
   <div id="app">
     <div :class="[{ flexStart: step === 1 }, 'wrapper']">
       <transition name="slide">
-        <img src="./assets/logo.svg" class="logo" v-if="step === 1">
+        <img src="./assets/logo.svg" class="logo" v-if="step === 1"
+             alt="spacer subtitle with blue-green sign up to them">
       </transition>
       <transition name="fade">
         <HeroImage v-if="step === 0" />
       </transition>
       <Claim v-if="step === 0" />
       <div class="search">
-        <label class="search__label" for="search">Type anything space-related to start.</label>
+        <label class="search__label" for="search" v-if="step === 0">
+          Type anything space-related to start.</label>
         <input class="search__input" id="search" name="search"
         v-model="searchValue" @input="handleInput" :class="{ dark: step === 1 }"/>
       </div>
-      <div class="results">
-
+      <div class="results" v-if="results && !loading && step === 1">
+        <Item v-for="item in results" :item="item" :key="item.data[0].nasa_id" />
       </div>
     </div>
   </div>
@@ -25,6 +27,7 @@ import axios from 'axios';
 import debounce from 'lodash.debounce';
 import HeroImage from '@/components/HeroImage.vue';
 import Claim from '@/components/Claim.vue';
+import Item from '@/components/Item.vue';
 
 const API = 'https://images-api.nasa.gov/search';
 
@@ -33,6 +36,7 @@ export default {
   components: {
     HeroImage,
     Claim,
+    Item,
   },
   data() {
     return {
@@ -120,6 +124,7 @@ body {
 .logo {
   position: relative;
   top: 16px;
+  margin-bottom: 36px;
 }
 
 .search {
@@ -127,8 +132,7 @@ body {
     flex-direction: column;
 
     &__label {
-        margin: 0;
-        margin-bottom: 32px;
+        margin: 0 0 32px 0;
         font-size: 12px;
         font-weight: 400;
         text-align: center;
@@ -177,6 +181,17 @@ body {
   &:focus {
     outline: transparent;
     box-shadow: 0 10px 20px -8px rgba(#1e3d4a, 0.5);
+  }
+}
+
+.results {
+  margin-top: 48px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 24px;
+
+  @media (min-width: 768px) {
+    grid-template-columns: 1fr 1fr 1fr;
   }
 }
 </style>
