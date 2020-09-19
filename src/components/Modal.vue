@@ -50,6 +50,10 @@ export default {
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 12px;
 
+  @media (max-width: 1024px) {
+    width: 100vw;
+  }
+
   @media (min-width: 1024px) {
     max-width: 70%;
     height: 60%;
@@ -103,12 +107,16 @@ export default {
   }
 
   &__photo {
-    height: auto;
     height: 100%;
     border: 1px solid #000000;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 12px;
+    @media (max-width: 1024px) {
+      width: 100%;
+      margin-bottom: 32px;
+    }
     @media (min-width: 1024px) {
+      width: 80%;
       margin-right: 20px;
     }
   }
