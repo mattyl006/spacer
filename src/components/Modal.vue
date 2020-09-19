@@ -46,6 +46,9 @@ export default {
   position: fixed;
   top: 0;
   left: 0;
+  border: 1px solid #000000;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 12px;
 
   @media (min-width: 1024px) {
     max-width: 70%;
@@ -97,15 +100,17 @@ export default {
 
   @media (min-width: 1024px) {
     flex-direction: row;
-    &__photo {
-      min-width: 50%;
-      margin-right: 20px;
-    }
   }
 
   &__photo {
-    width: 100%;
     height: auto;
+    height: 100%;
+    border: 1px solid #000000;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 12px;
+    @media (min-width: 1024px) {
+      margin-right: 20px;
+    }
   }
 
   &__description {
