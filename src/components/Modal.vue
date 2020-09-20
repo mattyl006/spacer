@@ -2,7 +2,7 @@
   <div class="outer-wrapper">
     <div class="inner-wrapper">
       <img class="inner-wrapper__photo" :src="photo">
-      <div class="inner-wrapper__description">
+      <div class="inner-wrapper__content">
         <h2 class="inner-wrapper__title">{{ title }}</h2>
         <p class="inner-wrapper__description">
           {{ description }}
@@ -32,7 +32,7 @@ export default {
   mounted() {
     this.photo = this.item.links[0].href;
     this.title = this.item.data[0].title;
-    this.description = this.item.data[0].description.substring(0, 250);
+    this.description = this.item.data[0].description;
   },
 };
 </script>
@@ -41,7 +41,6 @@ export default {
 
 .outer-wrapper {
   background-color: #f6f6f6;
-  max-width: 100%;
   height: 100%;
   position: fixed;
   top: 0;
@@ -55,8 +54,8 @@ export default {
   }
 
   @media (min-width: 1024px) {
-    max-width: 70%;
-    height: 60%;
+    width: 90%;
+    height: 85%;
     left: 0;
     right: 0;
     top: 0;
@@ -119,6 +118,15 @@ export default {
       width: 80%;
       margin-right: 20px;
     }
+  }
+
+  &__content {
+    overflow: scroll;
+    max-height: 70%;
+  }
+
+  &__title {
+    color: #333;
   }
 
   &__description {

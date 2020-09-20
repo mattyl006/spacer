@@ -99,6 +99,23 @@ body {
   line-height: 20px;
 }
 
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F0F1F3;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #C2C3C7;
+  border-radius: 8px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #A0A1A5;
+}
+
 .fade-enter-active, .fade-leave-active {
   transition: opacity .3s ease;
 }
