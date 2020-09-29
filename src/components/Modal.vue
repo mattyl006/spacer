@@ -42,20 +42,16 @@ export default {
 .outer-wrapper {
   background-color: #f6f6f6;
   height: 100%;
+  max-width: 100%;
   position: fixed;
   top: 0;
   left: 0;
   border: 1px solid #000000;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 12px;
-
-  @media (max-width: 1024px) {
-    width: 100vw;
-  }
 
   @media (min-width: 1024px) {
-    width: 90%;
-    height: 85%;
+    max-width: 70%;
+    height: 60%;
     left: 0;
     right: 0;
     top: 0;
@@ -109,7 +105,6 @@ export default {
     height: 100%;
     border: 1px solid #000000;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 12px;
     @media (max-width: 1024px) {
       width: 100%;
       margin-bottom: 32px;
@@ -126,11 +121,11 @@ export default {
   }
 
   &__title {
-    color: #333;
+    color: #1e3d4a;
   }
 
   &__description {
-    color: #333;
+    color: #1e3d4a;
   }
 }
 </style>
