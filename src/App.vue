@@ -19,6 +19,7 @@
         <Item v-for="item in results" :item="item" :key="item.data[0].nasa_id"
               @click="handleModalOpen(item)" />
       </div>
+      <div class="loader" v-if="step === 1 && loading"></div>
     </div>
     <Modal v-if="modalOpen" :item="modalItem" @close-modal="modalOpen = false" />
   </div>
@@ -223,9 +224,15 @@ body {
 }
 
 .loader {
+  margin-top: 96px;
   display: inline-block;
-  width: 80px;
-  height: 80px;
+  width: 64px;
+  height: 64px;
+
+  @media (min-width: 768px) {
+    width: 80px;
+    height: 80px;
+  }
 }
 
 .loader:after {
