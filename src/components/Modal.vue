@@ -50,7 +50,7 @@ export default {
 
   @media (min-width: 1024px) {
     max-width: 70%;
-    height: 60%;
+    height: 80%;
     left: 0;
     right: 0;
     top: 0;
@@ -104,12 +104,14 @@ export default {
     height: 100%;
     border: 1px solid #000000;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    object-fit: cover;
     @media (max-width: 1024px) {
       width: 100%;
       margin-bottom: 32px;
     }
     @media (min-width: 1024px) {
       width: 80%;
+      height: 100%;
       margin-right: 20px;
     }
   }
